@@ -1,5 +1,5 @@
 from flask import Flask, request
-import torch
+#import torch
 from transformers import pipeline
 
 
@@ -7,6 +7,10 @@ from transformers import pipeline
 
 
 app = Flask(__name__)
+
+@app.route('/home', methods=['GET'])
+def home():
+    return str("index.html")
 
 @app.route("/addme", methods=['POST'])
 def hello():
