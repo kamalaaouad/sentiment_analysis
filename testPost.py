@@ -38,7 +38,10 @@ def hello():
     print('hello')
     print('hello')
     data_text = request.form.get('data_text')
-    res = classifier(data_text)
+    data = request.get_json(force=True)
+    print(request.get_json())
+    print(data["data_text"])
+    res = classifier(data["data_text"])
     return json.dumps(res[0])
     #return json.dumps({"meg": data_text})
 
@@ -46,5 +49,5 @@ def hello():
 if __name__ == "__main__":
     from waitress import serve
 
-    serve(app, host="0.0.0.0", port=8080)
+    serve(app, host="0.0.0.0", port=8089)
     # app.run()
