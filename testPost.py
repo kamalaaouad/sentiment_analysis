@@ -5,12 +5,11 @@ from transformers import pipeline
 
 app = Flask(__name__)
 
-path = './distilbert-base-uncased-finetuned-sst-2-english'
 
-classifier = pipeline("sentiment-analysis", model=path)
+classifier = pipeline("sentiment-analysis", model='rabindralamsal/BERTsent')
 
 
-@app.route('/home', methods=['GET'])
+@app.route('/', methods=['GET'])
 def home():
     print('hi')
     #return jsonify(message=str("index.html"))
@@ -33,8 +32,8 @@ def home():
     #return json.dump({'message': "index.html"})
 
 
-@app.route("/addme", methods=['POST'])
-def hello():
+@app.route("/detect_sentiment", methods=['POST'])
+def detect_sentiment():
     print('hello')
     print('hello')
     data_text = request.form.get('data_text')
